@@ -7,10 +7,8 @@ class Usuario {
         $this->conexion = $conexion;
     }
 
-
     public function obtenerUnUsuario($id)
     {
-        
         // Realiza una consulta SQL
         $query = "SELECT * FROM usuario where id=".$id."";
         $resultado = $this->conexion->query($query);

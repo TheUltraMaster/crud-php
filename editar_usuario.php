@@ -4,33 +4,44 @@ include('usuario.php');
 $id = $_GET["id"];
 $usuario = new Usuario($conexion);
 $usuario = $usuario->obtenerUnUsuario($id);
-
+$title = "Editar usuario";
+include 'header.php';
 
 ?>
 
+<div class="container mt-5">
+    <div class="card shadow-lg">
+        <div class="card-header text-center">
+            <h2>Editar Usuario</h2>
+        </div>
+        <div class="card-body">
+            <form action="procesar_editar_usuario.php" method="post" class="w-75 mx-auto">
+                <input type="hidden" name="id" value="<?php echo $usuario['id']; ?>">
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Editar Usuario</title>
-</head>
-<body>
-    <h1>Editar Usuario</h1>
-    <form action="procesar_editar_usuario.php" method="post">
-        <input type="hidden" name="id" value="<?php echo $usuario['id']; ?>">
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" name="nombre" id="nombre" value="<?php echo $usuario['nombre']; ?>" class="form-control" required>
+                </div>
 
-        <label for="nombre">Nombre:</label>
-        <input type="text" name="nombre" value="<?php echo $usuario['nombre']; ?>" required><br>
+                <div class="mb-3">
+                    <label for="direccion" class="form-label">Dirección</label>
+                    <input type="text" name="direccion" id="direccion" value="<?php echo $usuario['direccion']; ?>" class="form-control">
+                </div>
 
-        <label for="direccion">Dirección:</label>
-        <input type="text" name="direccion" value="<?php echo $usuario['direccion']; ?>"><br>
+                <div class="mb-3">
+                    <label for="telefono" class="form-label">Teléfono</label>
+                    <input type="text" name="telefono" id="telefono" value="<?php echo $usuario['telefono']; ?>" class="form-control">
+                </div>
 
-        <label for="telefono">Teléfono:</label>
-        <input type="text" name="telefono" value="<?php echo $usuario['telefono']; ?>"><br>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                </div>
+            </form>
+        </div>
+        <div class="card-footer text-center">
+            <a href="listar_usuarios.php" class="btn btn-secondary">Volver a la Lista de Usuarios</a>
+        </div>
+    </div>
+</div>
 
-        <input type="submit" value="Guardar Cambios">
-    </form>
-    <a href="listar_usuarios.php">Volver a la Lista de Usuarios</a>
-</body>
-</html>
+<?php include 'footer.php'; ?>
