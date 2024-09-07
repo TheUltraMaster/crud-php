@@ -31,7 +31,7 @@
             </form>
             <!-- Enlace de vuelta a la lista de usuarios -->
             <div class="text-center mt-4">
-                <a href="listar_usuarios.php" class="btn btn-secondary">Volver a la Lista de Usuarios</a>
+                <a href="index.php" class="btn btn-secondary">Volver a la Lista de Usuarios</a>
             </div>
         </div>
     </div>
